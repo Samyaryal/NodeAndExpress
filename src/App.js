@@ -1,8 +1,46 @@
 import React, { Component } from 'react';
 
 import './App.css';
+const formValid = formErrors => {
+  let valid = true;
+  Object.values(formErrors).forEach(val => {
+    val.length > 0 && (valid = false);
+  });
+}
+
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      firstName: null,
+      lastName: null,
+      email: null,
+      password: null,
+      formErrors: {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+      }
+    };
+
+  }
+  handleSubmit = e => {
+    e.preventdefault ();
+    if(formValid(this.state.formErrors)){
+      console.log(`
+      --SUBMITTING--
+      First Name: ${this.state.firstName}
+      Last Name: ${this.state.lastName}
+      Email: ${this.state.email}
+      Password: ${this.state.password}
+    `);
+    }else{
+      console.error('From INVALID - DISPLAY ERROR MESSAGE');
+    }
+    }
+  };
   render() {
 
     return (
@@ -23,16 +61,17 @@ class App extends Component {
             <div className="email">
               <label htmlFor="email">Email</label>
               <input type="text" className="" placeholder="Email" type="email" name="email" noValidate
-                onChange={this.handleChange} /> 
+                onChange={this.handleChange} />
             </div>
             <div className="password">
               <label htmlFor="password">Password</label>
               <input type="text" className="" placeholder="Password" type="password" name="password" noValidate
                 onChange={this.handleChange} />
             </div>
-            <div className="createAccount"> </div>
+            <div className="createAccount">
               <button type="submit"> Create Account</button>
               <small>Already have an acount ?</small>
+            </div>
           </form>
         </div>
       </div>
