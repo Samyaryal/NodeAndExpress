@@ -10,8 +10,8 @@ const store = createStore(() => [] , {}, applyMiddleware());
 
 
 ReactDOM.render(
-    <Provider store={store}> // working on this part 
-        <App/>
+    <Provider store={store}>
+        <App />
     </Provider>,
     document.querySelector("#root")
 );
