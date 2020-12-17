@@ -153,10 +153,6 @@ class App extends Component {
               <button type="submit">Create Account</button>
               <small>Already Have an Account?</small>
             </div>
-            <div className="OR">
-            <button type="submit">Google login</button>
-            <small>Sign in with Google</small>
-            </div>
           </form>
         </div>
       </div>
